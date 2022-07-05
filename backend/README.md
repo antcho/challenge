@@ -1,39 +1,36 @@
-# Wedoogift Backend challenge
-You are interested in joining our team ? try to accomplish this challenge, we will be glad to see
-your code and give you feedback.
+# Anthony's notes
 
-## Guidelines
-* Use Java to accomplish this challenge.
-* Clone this repo (do not fork it)
-* Only do one commit per level and include the `.git` when submitting your test
-* We are not expecting any user interface for this challenge. 
+The challenge is done with the required features.
 
-## Evaluation
-We will look at:
-* How you use OOP.
-* Your code quality.
-* The design patterns you use.
-* Your ability to use unit tests.
+It's a SpringBoot application. \
+You can play around with it by launching it and trying the different endpoints. There is by default 2 companies and 2 users created.
 
+*/users/1 ->* John \
+*/users/2 ->* Jessica
 
-## Statements
+*/companies/1* -> Tesla \
+*/companies/2* -> Apple
 
-Companies can use Wedoogift services to distribute:
-- Gift deposits
-- Meal deposits
-### Gift deposits
-Gift deposits has 365 days lifespan, beyond this period it will no longer be counted in the user's balance.
+Exercise 1 : 2 endpoints were made, with 3 request parameters each : companyId; userId and value.
+Examples :
+* */action/distributeGift?companyId=1&userId=1&value=100*
+* */action/distributeMeal?companyId=2&userId=2&value=50* \
+You can test if they work by checking the users (or companies), and see the updated data.
 
-example:
-John receives a Gift distribution with the amount of $100 euros from Tesla. he will therefore have $100 in gift cards in his account.
-He received it on 06/15/2021. The gift distribution will expire on 06/14/2022. 
-### Meal deposits
-Meal deposit works like the Gift deposit excepting for the end date. In fact meal deposits expires at the end of February of the year following the distribution date.
+Exercise 2 : The user balance is automatically visible when checking the /users endpoint. It is split in two :
+one balance for meal and the other for gift.
 
-example:
-Jessica receives a Meal distribution from Apple with the amount of $50 on 01/01/2020, the distribution ends on 02/28/2021.
+Since all the code was done in a row, I only made one commit.
 
-* Implement one or two functions allowing companies to distribute gift and meal deposits to a user if the company balance allows it.
-* Implement a function to calculate the user's balance.
+You can also check an endpoint to know the expiration dates of the cards for a user :
+*/users/{userId}/expirationDates*
 
+I made some unit tests for the class DepositService, to cover it and to make sure its methods behave correctly.\
+I didn't make it for other class since it would be the same.
 
+I know the code isn't perfect, as there are some *null* values that are not checked, or other things not business accurate (like having a company to distribute a card to a employee of an other company),
+but this is what I've done in the time I has to do the challenge.
+
+Thank you for reading.
+
+Anthony
